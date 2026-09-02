@@ -1,5 +1,3 @@
-import { totalmem } from "os";
-
 /**
  * Consume an array of numbers, and return a new array containing
  * JUST the first and last number. If there are no elements, return
@@ -117,5 +115,24 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    const findIndex: number = values.findIndex(
+        (value: number): boolean => value < 0,
+    );
+    const negativeIndex: number = findIndex === -1 ? values.length : findIndex;
+    const sum: number =
+        values.length === 0 ?
+            0
+        :   values.reduce(
+                (
+                    totalVal: number,
+                    currentVal: number,
+                    index: number,
+                ): number =>
+                    index < negativeIndex ? totalVal + currentVal
+                    : negativeIndex === 0 ? 0
+                    : totalVal,
+            );
+    const result: number[] = [...values];
+    result.splice(negativeIndex + 1, 0, sum);
+    return result;
 }
