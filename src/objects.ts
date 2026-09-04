@@ -43,7 +43,16 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
-    return false;
+    const result: boolean =
+        question.options.length === 0 ? true
+        : (
+            question.options.find(
+                (option: string): boolean => option === answer,
+            )
+        ) ?
+            true
+        :   false;
+    return result;
 }
 
 /**
