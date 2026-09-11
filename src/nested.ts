@@ -177,8 +177,8 @@ export function addNewQuestion(
 ): Question[] {
     const newQuestion = makeBlankQuestion(id, name, type);
     const newArray = [...questions];
-    newArray.splice();
-    return [];
+    newArray.splice(questions.length, 0, newQuestion);
+    return newArray;
 }
 
 /***
