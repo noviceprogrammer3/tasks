@@ -1,5 +1,6 @@
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
+import { makeBlankQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -107,9 +108,9 @@ id,name,options,points,published
 export function toCSV(questions: Question[]): string {
     const csv = questions.reduce(
         (sum: string, question: Question, index: number): string =>
-            // ${index === questions.length - 1 ? " " : "/n"}
-            `${question.id},${question.name},${question.options.length},${question.points},${question.published}`,
-        "id,name,options,points,published/n",
+            sum +
+            `${question.id},${question.name},${question.options.length},${question.points},${question.published}${index === questions.length - 1 ? "" : "\n"}`,
+        "id,name,options,points,published\n",
     );
     return csv;
 }
@@ -174,6 +175,9 @@ export function addNewQuestion(
     name: string,
     type: QuestionType,
 ): Question[] {
+    const newQuestion = makeBlankQuestion(id, name, type);
+    const newArray = [...questions];
+    newArray.splice();
     return [];
 }
 
