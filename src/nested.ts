@@ -191,7 +191,21 @@ export function renameQuestionById(
     targetId: number,
     newName: string,
 ): Question[] {
-    return [];
+    const newArray = questions.map((question: Question) =>
+        question.id !== targetId ?
+            question
+        :   {
+                id: question.id,
+                body: question.body,
+                expected: question.expected,
+                name: newName,
+                options: question.options,
+                points: question.points,
+                published: question.published,
+                type: question.type,
+            },
+    );
+    return newArray;
 }
 
 /***
