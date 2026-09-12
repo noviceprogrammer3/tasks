@@ -220,7 +220,26 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType,
 ): Question[] {
-    return [];
+    //const targetIndex = questions.findIndex((question: Question) => question.id !== targetId)
+    //const newArray = questions.map((question: Question):Question => )
+    const newArray = questions.map((question: Question) =>
+        question.id !== targetId ?
+            question
+        :   {
+                id: question.id,
+                body: question.body,
+                expected: question.expected,
+                name: question.name,
+                options:
+                    newQuestionType === "multiple_choice_question" ?
+                        question.options
+                    :   [],
+                points: question.points,
+                published: question.published,
+                type: newQuestionType,
+            },
+    );
+    return newArray;
 }
 
 /**
