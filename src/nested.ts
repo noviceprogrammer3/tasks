@@ -261,23 +261,19 @@ export function editOption(
             question.id !== targetId ?
                 question
             :   {
-                    id: question.id,
-                    body: question.body,
-                    expected: question.expected,
-                    name: question.name,
+                    ...question,
                     options:
                         targetOptionIndex === -1 ?
                             [...question.options, newOption]
-                        :   question.options.splice(
-                                targetOptionIndex,
-                                1,
-                                newOption,
+                        :   question.options.map(
+                                (option: string, index: number): string =>
+                                    index === targetOptionIndex ? newOption : (
+                                        option
+                                    ),
                             ),
-                    points: question.points,
-                    published: question.published,
-                    type: question.type,
                 },
     );
+
     return newArray;
 }
 
