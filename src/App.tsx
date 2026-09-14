@@ -1,7 +1,10 @@
 import React from "react";
-import "./App.css";
-import { Button } from "react-bootstrap";
-import bigThree from "./assets/images/bigThree.png";
+import { ChangeType } from "./components/ChangeType";
+import { RevealAnswer } from "./components/RevealAnswer";
+import { StartAttempt } from "./components/StartAttempt";
+import { TwoDice } from "./components/TwoDice";
+import { CycleHoliday } from "./components/CycleHoliday";
+import { Counter } from "./components/Counter";
 
 function App(): React.JSX.Element {
     return (
@@ -9,37 +12,19 @@ function App(): React.JSX.Element {
             <header className="App-header" style={{ backgroundColor: "blue" }}>
                 UD CISC275 with React Hooks and TypeScript, By Soleil Donfack
             </header>
-            <div className="column">
-                <h2>Top three Players</h2>
-                <ol>
-                    <li>Lamine Yamal</li>
-                    <li>Kylian Mbappe</li>
-                    <li>Erling Haaland</li>
-                </ol>
-            </div>
-            <div className="column">
-                <Button
-                    onClick={() => {
-                        console.log("Hello World!");
-                    }}
-                >
-                    Log Hello World
-                </Button>
-                <div
-                    style={{
-                        width: "100px",
-                        height: "50px",
-                        backgroundColor: "red",
-                    }}
-                ></div>
-            </div>
-            <div className="column">
-                <img
-                    className="images"
-                    src={bigThree}
-                    alt="A fish mopping the sea"
-                />
-            </div>
+            <div>Hello World</div>
+            <hr></hr>
+            <Counter></Counter>
+            <hr />
+            <RevealAnswer></RevealAnswer>
+            <hr />
+            <StartAttempt></StartAttempt>
+            <hr />
+            <TwoDice></TwoDice>
+            <hr />
+            <ChangeType></ChangeType>
+            <hr />
+            <CycleHoliday></CycleHoliday>
         </div>
     );
 }
