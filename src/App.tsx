@@ -18,7 +18,7 @@ function App(): React.JSX.Element {
             </header>
             <div>Hello World</div>
             <hr></hr>
-            {/* <DoubleHalf></DoubleHalf> */}
+            <DoubleHalf></DoubleHalf>
             <hr></hr>
             <ChooseTeam></ChooseTeam>
             <hr></hr>
